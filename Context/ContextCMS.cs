@@ -6,7 +6,7 @@ namespace cms.Context
    public class ContextCMS : DbContext
    {
       // create constructor
-      public ContextCMS()
+      public ContextCMS(DbContextOptions<ContextCMS> options) : base(options)
       {
 
       }
