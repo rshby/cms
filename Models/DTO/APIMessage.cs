@@ -1,20 +1,22 @@
-﻿using Newtonsoft.Json;
+﻿
+
+using System.Text.Json.Serialization;
 
 namespace cms.Models.DTO
 {
-   [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
    public class APIMessage<T> where T : class
    {
-      [JsonProperty("status_code")]
+      [JsonPropertyName("status_code")]
       public int? StatusCode { get; set; }
 
-      [JsonProperty("status")]
+      [JsonPropertyName("status")]
       public string? Status { get; set; }
 
-      [JsonProperty("message")]
+      [JsonPropertyName("message")]
       public string? Message { get; set; }
 
-      [JsonProperty("data")]
+      [JsonPropertyName("data")]
+      [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
       public T? Data { get; set; }
    }
 }
